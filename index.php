@@ -6,6 +6,9 @@
  </head>
 
  <body>
- 	<?php echo "Hello World"; ?>
+ 	<?php 
+       echo "Hello World"; 
+       echo "Test cloning";
+  ?>
  </body>
 </html>
