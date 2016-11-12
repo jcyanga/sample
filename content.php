@@ -67,7 +67,7 @@ switch ($y) {
 	case "2015":
 			echo "It's a 2015";
 		break;
-	case "2016 ":
+	case "2016":
 			echo "It's a 2016";
 		break;
 	default:
@@ -247,4 +247,123 @@ $_SESSION['name'] = "Jose Czar L. Yanga";
 class MyClass {
 	
 }
+
+$arr = array();
+$arr[] = 1;
+$arr[] = 22;
+unset($arr[1]);
+$arr[] = 34;
+$arr[] = 89;
+
+print_r($arr);
+
+
+$arr1 = array(1,3,5,8,9,11);
+foreach($arr1 AS $k => $v){
+    $v++;
+}
+echo $b = $arr1[2];
+
+class a {
+  private $b = 'nice';
+ function b()
+ {
+    return $this->b;
+ }
+}
+
+class b extends a {
+  
+}
+
+$a = new b;
+echo $a->b();
+
+
+// $aa = array(4,7,8);
+// $bb = array(2,4,8,19,1);
+// $cc = $aa-$bb;
+// print_r($cc);
+
+// echo implode("",$cc);
+
+echo '<br/>';
+// echo -5%4;
+
+
+// $aw = array(1,8,7,5);
+// $bw = array(3,7,11,6);
+// $strw = '879';
+// echo $cw = str_replace($aw, $bw , $strw, $d);
+
+$val = "level";
+$split_var = str_split($val);
+$cnt_var = count($split_var);
+$string = "";
+
+for($p = $cnt_var-1; $p >= 0; $p--) {
+	$string .= $split_var[$p];
+}
+
+if($val == $string) {
+		echo "It's a Palindrome";
+}else {
+		echo "It's not a Palindrome";
+}
+
+echo '<br/>';
+
+$array = array(1,1,2,3,4,4,5,5,6,7,8,9,9);
+$len = count($array);
+
+for($q = 0; $q < $len; $q++) {
+	$temp = $array[$q];
+		for($r = 0; $r < $len; $r++) {
+			if($r != $q) {
+				if($temp == $array[$r]) {
+					echo $temp . '<br/>';
+					$array[$r]="";
+				}
+			}
+		}
+}
+
+
+echo '<br/>';
+
+$number = 5;
+$number1 = 20;
+
+for($t = $number; $t <= $number1; $t++) {
+	for($u = 2; $u < $t; $u++) {
+		if($t % $u == 0) {
+			break;
+		}
+	}
+
+	if($u == $t) {
+		echo "Prime number is " . $t . '<br/>';
+	}
+
+}
+
+echo '<br/>';
+
+$array1 = array(5,4,1,2,3,6,7,9,8,10);
+$ctr = count($array1);
+
+for($v = 0; $v < $ctr; $v++) {
+	for($w = $v+1; $w < $ctr; $w++) {
+		if($array1[$v] > $array1[$w]) {
+			$temp1 = $array1[$w];
+			$array1[$v] = $array1[$w];
+			$array1[$w] = $temp1;
+		}
+	}
+}
+
+print_r($array1);
+
+echo '<br/>';
+
 ?>

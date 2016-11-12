@@ -1,102 +1,45 @@
 <?php 
+include_once 'dbconn.php';
+$dbconn = new Db_conn();
+$conn = $dbconn->connect();
 
-$connection = new MongoDB\Driver\Manager();
-// "mongodb://admin:062893@localhost:27017/practice"
+global $conn;
 
-echo "Connection to database successfully";
+class CRUD {	
 
-$conn = $connection->practice;
+	public function create($table,$uname,$pwd,$name) {
+		global $conn;
 
-echo "Database selected";
+		$sql = "INSERT INTO $table (user, password, fullname) VALUES ('$uname','$pwd','$name')";
 
-// $log = $conn->createCollection(array(
-// 				'create' => 'User',
-// 				'capped' => TRUE,
-// 				'size' => 10*1024,
-// 				'max' => 10
-// 			)
-// 	);
+		if ($conn->query($sql) === TRUE) {
+		    echo "New record created successfully";
+		} else {
+		    echo "Error: " . $sql . "<br>" . $conn->error;
+		}
 
-for($i=0;$i < 100;$i++) {
-	$conn->testData->insert(
-			array(
-					"level" => WARN,
-					"msg" => "Sampple log msg $i" ,
-					"ts" => new MongoDate()
-				)
-		);
+		$conn->close();
+
+		Header('Location: form.php');
+	}
+
+	public function read($table='userlist') {
+		global $conn;
+
+		$sql = "SELECT * FROM $table";
+		$data = $conn->query($sql);
+		
+		return $data; 
+	}
+
+	public function edit($id) {
+		global $conn;
+
+		$sql = "SELECT * FROM userlist WHERE id = '$id'";
+		$data = $conn->query($sql);
+
+		return $data;
+	}
 }
-
-echo "Successfully created collection and inserted in database.";
-
-$msgs = $conn->testData->find();
-
-foreach($msgs as $row) {
-	echo $row['msg'].'\n';
-}
-
-
-// $collection = $connection->createCollection('member');
-
-// echo "Database mydb selected";
-
-// $mycoll = $connection->practice->member;
-
-// $coll_user = $db->user;
-
-// $data = array(
-// 			'uname' => 'jc',
-// 			'pwd' => '123456',
-// 			'datetime' => '2016-11-03 12:10:00',  
-// 	);
-
-// $mycoll->insert($data);
-
-// echo "Successfully inserted in database.";
-
-// $cursor = $mycoll->find();
-
-// foreach ($cursor as $row) {
-// 	$row['uname'] . '<br/>';
-// }
-
-
-
-
-// $m = new MongoClient('mongodb://localhost', [
-//     'username' => 'admin',
-//     'password' => '062893',
-//     'db'       => 'test'
-// ]);
-// echo "Connection to database successfull. <br>";
-
-// $server = 'localhost';
-// $uname = 'root';
-// $pass = '062893';
-// $dbname = 'practice_db';
-
-// $conn = new mysqli($server,$uname,$pass,$dbname);
-
-// if($conn->connect_error) {
-// 	die("Connection Failed : " . $conn->connect_error );
-// }
-
-// echo "Connected Successfully";
-
-// db.createUser({user:"admin", pwd:"062893", roles:[{role:"root", db:"admin"}]})	
-
-// new MongoClient();  //Old Class
-
-// new MongoDB\Driver\Manager(); // New Class
-
- // $m = new MongoClient();
-
- //   echo "Connection to database successfully";
- //   // select a database
- //   // $db = $m->test;
-
- //   echo "Database mydb selected";
-
-
 
 ?>
