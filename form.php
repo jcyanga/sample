@@ -40,7 +40,7 @@ Fullname:
 				<td><?php echo $row['password']; ?></td>
 				<td><?php echo $row['fullname']; ?></td>
 				<td><a href="edit.php?id=<?php echo $row['id']; ?>">Update</a></td>
-				<td><a href="delete.php?id=<?php echo $row['id']; ?>">Delete</td>
+				<td><a href="save.php?Delete=true&id=<?php echo $row['id']; ?>">Delete</td>
 			</tr>
 		<?php } ?>	
 	</tbody>

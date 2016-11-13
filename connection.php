@@ -40,6 +40,39 @@ class CRUD {
 
 		return $data;
 	}
+
+	public function update($table,$id,$uname,$pwd,$name) {
+		global $conn;
+
+		$sql = "UPDATE $table SET user = '$uname', password = '$pwd', fullname = '$name' WHERE id = '$id'";
+
+		if ($conn->query($sql) === TRUE) {
+		    echo "Updated successfully";
+		} else {
+		    echo "Error: " . $sql . "<br>" . $conn->error;
+		}
+
+		$conn->close();
+
+		Header('Location: form.php');
+	}
+
+	public function delete($table,$id) {
+		global $conn;
+
+		$sql = "DELETE FROM $table WHERE id = '$id'";
+
+		if ($conn->query($sql) === TRUE) {
+		    echo "New record updated successfully";
+		} else {
+		    echo "Error: " . $sql . "<br>" . $conn->error;
+		}
+
+		$conn->close();
+
+		Header('Location: form.php');
+
+	}
 }
 
 ?>

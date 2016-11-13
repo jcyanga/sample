@@ -8,13 +8,8 @@
  </head>
 
  <body>
-<<<<<<< HEAD
+
  	<?php include 'content.php'; ?>
-=======
- 	<?php 
-       echo "Hello World"; 
-       echo "Test cloning";
-  ?>
->>>>>>> f64ae1ce7e511815d00bec70687e1831f45ad586
+
  </body>
 </html>

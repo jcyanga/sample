@@ -13,6 +13,23 @@ if(isset($_POST['Submit'])) {
 	$crud->create($table,$uname,$pwd,$name);
 }
 
+if(isset($_POST['Update'])) {
+	$table = 'userlist';
+	$id = $_POST['id'];
+	$uname = test_data($_POST['uname']);
+	$pwd = test_data($_POST['pwd']);
+	$name = test_data($_POST['fullname']);
+
+	$crud->update($table,$id,$uname,$pwd,$name);
+}
+
+if (isset($_GET['Delete'])) {
+	$table = 'userlist';
+	$id = $_GET['id'];
+
+	$crud->delete($table,$id);
+}
+
 function test_data($data) {
 	$data = trim($data);
 	$data = htmlspecialchars($data);
